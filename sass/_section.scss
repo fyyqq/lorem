@@ -1,0 +1,53 @@
+@use 'variable' as var;
+
+@mixin titleStyle($color) {
+    @if $color {
+        color: map-get($map: var.$alert, $key: 'blue');
+    }
+}
+
+.section {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    column-gap: 45px;
+    & .article {
+        padding: 25px;
+        border: 2px solid map-get($map: var.$alert, $key: 'blue');
+        margin-bottom: 20px;
+        &-container {
+            & .article-title {
+                @include titleStyle(true);
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .aside {
+        margin-bottom: 20px;
+        padding: 25px;
+        border: 2px solid map-get($map: var.$alert, $key: 'green');
+        &-container {
+            & .aside-title {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+header, section,
+article, aside, 
+footer {
+    h3 {
+        width: 100%;
+        font-size: 22px;
+        font-family: var.$title-font;
+        letter-spacing: var.$space-text-max;
+        color: var.$high-white;
+    }
+    p {
+        color: var.$low-white;
+        width: 100%;
+        font-size: 17px;
+        font-family: var.$desc-font;
+        letter-spacing: var.$space-text-min;
+    }
+}

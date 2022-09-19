@@ -1,0 +1,146 @@
+@use 'variable' as var;
+@use 'mixin' as mix;
+
+@mixin listBGColor($list) {
+    @if $list == red {
+        background-color:map-get($map: var.$alert, $key: 'red');
+        color: map-get($map: var.$alert, $key: 'red');
+    }
+    @else if $list == green {
+        background-color:map-get($map: var.$alert, $key: 'green');
+        color: map-get($map: var.$alert, $key: 'green');
+    }
+    @else if $list == yellow {
+        background-color:map-get($map: var.$alert, $key: 'yellow');
+        color: map-get($map: var.$alert, $key: 'yellow');
+    }
+    @else {
+        background-color:map-get($map: var.$alert, $key: 'blue');
+        color: map-get($map: var.$alert, $key: 'blue');
+    }
+}
+
+@mixin listColor($list) {
+    @if $list == red {
+        color: map-get($map: var.$alert, $key: 'red');
+    }
+    @else if $list == green {
+        color: map-get($map: var.$alert, $key: 'green');
+    }
+    @else if $list == yellow {
+        color: map-get($map: var.$alert, $key: 'yellow');
+    }
+    @else {
+        color: map-get($map: var.$alert, $key: 'blue');
+    }
+}
+
+.navbar {
+    background-color: #111;
+    border-bottom: 3px solid rgb(78, 46, 221);
+    height: 85px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    position: relative;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    & .navbar-title {
+        float: left;
+        z-index: 999;
+        & h3 {
+            font-family: 'Archivo', sans-serif;
+            letter-spacing: var.$space-text-max;
+            font-size: 23px;
+            text-transform: uppercase;
+            color: #ddd;
+            background: -webkit-linear-gradient(rgb(92, 140, 230), rgb(204, 0, 204));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+    & &-container {
+        @include mix.navbar();
+        & .nav-content {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        & .navbar-list {
+            @include mix.navList();
+            & a {
+                height: 100%;
+                padding: 10px 0;
+                font-weight: 500;
+                text-decoration: none;
+                font-size: 14px;
+                font-family: 'Archivo', sans-serif;
+                text-transform: uppercase;
+                color: #ccc;
+                position: relative;
+                & li {
+                    margin: 3px 15px;
+                    cursor: pointer;
+                }
+                & li::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    transition: width .4s;
+                }
+            }
+            & a:nth-child(1):hover {
+                @include listColor(red);
+            }
+            & a:nth-child(2):hover {
+                @include listColor(green);
+            }
+            & a:nth-child(3):hover {
+                @include listColor(yellow);
+            }
+            & a:nth-child(4):hover {
+                @include listColor(blue);
+            }
+            & a:hover .r:after {
+                content: '';
+                width: 100%;
+                @include listBGColor(red);
+            }
+            & a:hover .g:after {
+                content: '';
+                width: 100%;
+                @include listBGColor(green);
+            }
+            & a:hover .y:after {
+                content: '';
+                width: 100%;
+                @include listBGColor(yellow);
+            }
+            & a:hover .b:after {
+                content: '';
+                width: 100%;
+                @include listBGColor(blue);
+            }
+        }
+    }
+    & .menuIcon {
+        user-select: none;
+        float: right;
+        z-index: 999;
+        & .menu, & .close {
+            font-size: 37px;
+            color: #ddd;
+            cursor: pointer;
+        }
+        & .close {
+            @include mix.dNone();
+        }
+    }
+}

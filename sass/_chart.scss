@@ -1,0 +1,45 @@
+
+@use 'variable' as var;
+
+.chart {
+    border: 2px solid cyan;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 20px;
+    & &-container {
+        display: grid;
+        place-items: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        padding: 20px 0;
+        row-gap: 20px;
+        @for $i from 1 to 7 {
+            & .chart-list:nth-child(#{$i}) {
+                background-color: lighten(var.$rb, $i * 4%);
+            }
+        }
+        & .chart-list {
+            width: 310px;
+            height: 280px;
+            padding: 20px 15px;
+            & .chart-list-title {
+                text-align: center;
+            }
+            & .chart-list-desc {
+                text-align: left;
+                margin-top: 15px;
+                font-family: sans-serif;
+                font-size: 14px;
+            }
+        }
+        & .chart-list:nth-child(4) {
+            order: 3;
+        }
+        & .chart-list:nth-child(6) {
+            order: 1;
+        }
+        & .chart-list:nth-child(5) {
+            order: 2;
+        }
+    }
+}

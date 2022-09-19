@@ -1,0 +1,33 @@
+@use 'variable' as var;
+
+
+.header {
+    height: 250px;
+    width: 100%;
+    margin: var.$margin-auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    border: 2px solid map-get($map: var.$alert, $key: 'red');
+    margin-bottom: 20px;
+    margin-top: 40px;
+    & &-title {
+        transform: translateY(-15px);
+        color: var.$high-white;
+        font-size: 22px;
+        font-family: var.$title-font;
+        letter-spacing: var.$space-text-max;
+    }
+    & &-desc {
+        position: absolute;
+        color: var.$low-white;
+        font-size: 17px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-style: italic;
+        transform: translate(-50%, 8px);
+    }
+}

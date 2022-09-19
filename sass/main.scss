@@ -1,0 +1,50 @@
+@use 'navigation';
+@use 'header';
+@use 'section';
+@use 'chart';
+@use 'adds';
+@use 'footer';
+@use 'query';
+@use 'variable';
+@use 'mixin';
+
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300&display=swap');
+
+$high-white: #ddd;
+$low-white : #b9b9b9;
+$title-font: 'Neucha', cursive;
+$desc-font: 'Shadows Into Light', cursive;
+$space-text-max: 3px;
+$space-text-min: 1px;
+$margin-auto: 0 auto;
+
+$alert: (
+    'green' : mediumseagreen,
+    'blue' : cornflowerblue,
+    'yellow' : goldenrod,
+    'red' : mediumvioletred,
+);
+
+$navBtn: (
+    'github' : rgb(189, 189, 189),
+    'githubbg' : rgb(212, 212, 212),
+    'sign' : royalblue,
+);
+
+body {
+    background-color: #212121;
+    padding-bottom: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 0 25px;
+}
+

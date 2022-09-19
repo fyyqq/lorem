@@ -1,0 +1,51 @@
+@use 'mixin' as mix;
+
+
+@media screen and (max-width: 1050px) {
+    .container {
+        padding: 0 10px;
+    }
+    .section {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+    .header {
+        & &-title {
+            font-size: 18px;
+        }
+    }
+    .navbar {
+        padding: 0 25px;
+    }
+    .chart {
+        & &-container {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: unset;
+            row-gap: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .chart {
+        & &-container {
+            grid-template-columns: 1fr;
+            grid-template-rows: unset;
+            row-gap: 20px;
+            & .chart-list {
+                width: 90%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .adds {
+        & &-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            row-gap: 30px;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+@use 'variable' as var;
+
+$site-color: (
+    fa-youtube : #f02c2c,
+    fa-facebook : royalblue,
+    fa-github : whitesmoke,
+    fa-twitter : rgb(78, 151, 247),
+    fa-twitch : rgb(202, 123, 255),
+);
+
+.footer {
+    height: 150px;
+    width: 100%;
+    border: 2px solid map-get($map: var.$alert, $key: 'yellow');
+    & &-container {
+        padding-top: 10px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-bottom: 10px;
+        & .footer-title {
+            margin-bottom: 20px;
+        }
+        & .footer-logo {
+            margin-top: 7px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            & .fa-brands {
+                font-size: 16.5px;
+                margin: 0 15px;
+                color: var.$low-white;
+                cursor: pointer;
+            }
+            & li:hover {
+                @each $val, $key in $site-color {
+                    .#{$val} {
+                        color: $key;
+                        transition: all .2s;
+                    }
+                }
+            }
+        }
+    }
+}
